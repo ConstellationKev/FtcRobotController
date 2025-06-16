@@ -37,7 +37,7 @@ public class ObjectTrackingPipline extends OpenCvPipeline {
         Imgproc.cvtColor(imageFrame, hsvFrame, Imgproc.COLOR_RGB2HSV);
 
         // detecting red objects
-        Scalar lowRedHSV = new Scalar(136, 87, 111);
+        Scalar lowRedHSV = new Scalar(160, 100, 100);
         Scalar highRedHSV = new Scalar(180, 255, 255);
         Core.inRange(hsvFrame, lowRedHSV, highRedHSV, redMask);
         // processes mask to optimize color detection
@@ -55,8 +55,8 @@ public class ObjectTrackingPipline extends OpenCvPipeline {
         }
 
         // detecting blue objects
-        Scalar lowBlueHSV = new Scalar(94, 80, 2);
-        Scalar highBlueHSV = new Scalar(100, 171, 255); // TODO: TUNE THIS
+        Scalar lowBlueHSV = new Scalar(90,50,70);
+        Scalar highBlueHSV = new Scalar(128,255,255);
         Core.inRange(hsvFrame, lowBlueHSV, highBlueHSV, blueMask);
         // processes mask to optimize color detection
         Imgproc.dilate(blueMask, blueMask, kernal);
@@ -73,8 +73,8 @@ public class ObjectTrackingPipline extends OpenCvPipeline {
         }
 
         // detecting Yellow objects
-        Scalar lowYellowHSV = new Scalar(94, 80, 2);
-        Scalar highYellowHSV = new Scalar(100, 171, 255); // TODO: TUNE THIS
+        Scalar lowYellowHSV = new Scalar(10, 100, 100);
+        Scalar highYellowHSV = new Scalar(30, 255, 255);
         Core.inRange(hsvFrame, lowYellowHSV, highYellowHSV, yellowMask);
         // processes mask to optimize color detection
         Imgproc.dilate(yellowMask, yellowMask, kernal);
